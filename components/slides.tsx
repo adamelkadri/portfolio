@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import {
   contactLinks,
   education,
@@ -106,14 +107,24 @@ export function IndexSlide({ onExplore }: { onExplore: () => void }) {
       {/* Height is driven by the viewport so the whole hero, explore control
           included, stays above the fold on a laptop screen. */}
       <div className="relative mt-10 aspect-4/5 h-[min(40dvh,360px)]">
-        <div className="flex h-full flex-col items-center justify-center gap-4 rounded-[28px] border border-line bg-surface-2">
-          <span
+        <div className="relative h-full overflow-hidden rounded-[28px] border border-line bg-surface-2">
+          {/* Above the fold, so it loads eagerly rather than popping in after
+              the hero text has already settled. */}
+          <Image
+            src="/adam-el-kadri.jpg"
+            alt={profile.name}
+            fill
+            sizes="(max-width: 768px) 60vw, 288px"
+            priority
+            className="object-cover"
+          />
+          {/* The caption sits on the photo, so it carries its own scrim rather
+              than trusting whatever the image happens to be doing behind it. */}
+          <div
             aria-hidden="true"
-            className="text-[clamp(3rem,14vw,5rem)] leading-none font-bold tracking-tight"
-          >
-            {profile.initials}
-          </span>
-          <span className="text-[11px] tracking-[0.24em] text-ink-muted lowercase">
+            className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/75 to-transparent"
+          />
+          <span className="absolute inset-x-0 bottom-4 text-center text-[11px] tracking-[0.24em] text-white/85 lowercase">
             {education.location}
           </span>
         </div>
