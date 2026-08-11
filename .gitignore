@@ -43,3 +43,7 @@ next-env.d.ts
 
 # local design-reference scaffolding, not part of the build
 /jadghazi-design/
+
+# camera originals for the hero crop. The site serves the cropped and resized
+# copy in public/, so these are kept locally for re-cropping rather than shipped.
+/assets/images/
