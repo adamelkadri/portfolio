@@ -3,9 +3,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ---------------------------------------------------------------------------
-   Design tokens. Values are taken from jadghazi-design/references/DESIGN.md.
-   The extracted role labels are shuffled in that file; the light/dark variable
-   table (DESIGN.md section 2) is the authoritative pairing and is used here.
+   Design tokens. Every colour on the site resolves to one of these. The palette
+   is strictly greyscale in both themes: there is no accent colour, so contrast
+   and weight carry all the emphasis.
 --------------------------------------------------------------------------- */
 
 :root {
