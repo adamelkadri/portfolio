@@ -1,0 +1,312 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Design tokens. Values are taken from jadghazi-design/references/DESIGN.md.
+   The extracted role labels are shuffled in that file; the light/dark variable
+   table (DESIGN.md section 2) is the authoritative pairing and is used here.
+--------------------------------------------------------------------------- */
+
+:root {
+  --bg: #f0f0f0;
+  --bg-secondary: #e8e8e8;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --line: rgba(0, 0, 0, 0.08);
+
+  /* Pills keep a fixed light treatment in both themes, as on the reference. */
+  --pill-bg: #ffffff;
+  --pill-border: rgba(0, 0, 0, 0.12);
+  --pill-text: #1a1a1a;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-drop: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dark {
+  --bg: #1a1a1a;
+  --bg-secondary: #222222;
+  --text-primary: #f0f0f0;
+  --text-secondary: #999999;
+  --line: rgba(255, 255, 255, 0.08);
+}
+
+@theme inline {
+  --color-surface: var(--bg);
+  --color-surface-2: var(--bg-secondary);
+  --color-ink: var(--text-primary);
+  --color-ink-muted: var(--text-secondary);
+  --color-line: var(--line);
+
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+
+  --shadow-float: 0 4px 14px rgba(0, 0, 0, 0.18);
+
+  --radius-card: 0.75rem;
+
+  --breakpoint-xs: 375px;
+}
+
+/* --------------------------------------------------------------------------- */
+
+* {
+  min-width: 0;
+}
+
+html {
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+/* Numeric figures stay aligned in the metric rows. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--text-primary);
+  color: var(--bg);
+}
+
+/* ---------------------------------------------------------------------------
+   Keyframes, verbatim from references/ANIMATIONS.md
+--------------------------------------------------------------------------- */
+
+@keyframes hero-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-26px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pill-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pill-float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes arrow-float {
+  0% {
+    transform: translate(0px) rotate(0deg);
+  }
+  30% {
+    transform: translate(4px, -6px) rotate(-5deg);
+  }
+  65% {
+    transform: translate(-3px, 3px) rotate(4deg);
+  }
+  100% {
+    transform: translate(0px) rotate(0deg);
+  }
+}
+
+.hero-drop {
+  display: inline-block;
+  animation: hero-drop 0.6s var(--ease-drop) both;
+}
+
+.pill-pop {
+  animation: pill-pop 0.5s var(--ease-pop) both;
+}
+
+.pill-float {
+  animation: pill-float 4s ease-in-out infinite;
+}
+
+.arrow-float {
+  animation: arrow-float 3.4s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   Deck
+--------------------------------------------------------------------------- */
+
+/* Children use `m-auto` rather than `justify-content: center` so that content
+   taller than the viewport stays reachable instead of overflowing past the
+   top edge of the scroll container. */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease),
+    visibility 0s linear 0.4s;
+}
+
+.slide[data-active="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease),
+    visibility 0s;
+}
+
+/* Staggered entrance. Replays whenever a slide becomes active. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  transition-delay: 0ms;
+}
+
+.slide[data-active="true"] .reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--i, 0) * 50ms);
+}
+
+.pill {
+  background-color: var(--pill-bg);
+  border: 1.5px solid var(--pill-border);
+  color: var(--pill-text);
+  box-shadow: var(--shadow-float);
+}
+
+/* ---------------------------------------------------------------------------
+   Custom cursor
+
+   The disc is always full size and scaled down, so the size change animates on
+   `transform` alone. `mix-blend-mode: difference` against white is what inverts
+   the text underneath, and it keeps the cursor monochrome in both themes with
+   no colour of its own.
+--------------------------------------------------------------------------- */
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9990;
+  display: none;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+  will-change: transform;
+}
+
+.cursor[data-visible="true"] {
+  opacity: 1;
+}
+
+/* The box is the zoomed size; every state scales down from it. Scale values are
+   written as a fraction of 32px so the rendered diameter is readable.
+
+   32px clears the 13px nav label with room to spare, so the disc reads as a
+   clean circular window travelling along the word rather than a blob clipping
+   the letters partway up their height. */
+.cursor-dot {
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
+  border-radius: 9999px;
+  background: #ffffff;
+  mix-blend-mode: difference;
+  transform: scale(0.3125); /* 10px */
+  transition: transform 0.25s var(--ease-pop);
+}
+
+/* In light mode the white disc blended against the light `#f0f0f0` page reads
+   as another pale patch and disappears. Drop the blend there and paint the disc
+   in the ink colour so it stays a crisp dark dot on the light background. Dark
+   mode keeps the white `difference` treatment above untouched. */
+html:not(.dark) .cursor-dot {
+  background: var(--text-primary);
+  mix-blend-mode: normal;
+}
+
+.cursor-dot[data-press="true"] {
+  transform: scale(0.25); /* 8px */
+}
+
+/* Listed after the press rules so a press while zoomed stays large. */
+.cursor-dot[data-zoom="true"] {
+  transform: scale(1); /* 32px */
+}
+
+.cursor-dot[data-zoom="true"][data-press="true"] {
+  transform: scale(0.84); /* 27px */
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor {
+    display: block;
+  }
+
+  /* Beats the cursor utilities Tailwind applies to buttons and disabled controls. */
+  html.cursor-custom,
+  html.cursor-custom * {
+    cursor: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion
+--------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .slide {
+    transform: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
