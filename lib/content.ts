@@ -1,6 +1,8 @@
 /**
- * Every value here is transcribed from Adam_El-Kadri_CV.pdf. Nothing is
- * invented: if a fact is not on the CV it does not appear on the site.
+ * Every value here comes from Adam_El-Kadri_CV.pdf. Nothing is invented: if a
+ * fact is not on the CV it does not appear on the site. Experience and project
+ * bullets are condensed to one line each so a slide reads at a glance; the CV
+ * itself, linked from the contact slide, carries the full detail.
  */
 
 export const profile = {
@@ -88,9 +90,9 @@ export const experience = [
     period: "June 2026 to Present",
     location: "Hybrid",
     points: [
-      "Reduced crawler runtime from 138s to 43s by parallelising a 30-page workload with Celery, Redis, and 4 concurrent workers.",
-      "Built an LLM-based extraction pipeline using Anthropic Claude and Playwright to parse candidate profiles from web pages and PDFs, achieving a 94.7% crawl-job success rate.",
-      "Developed 31 REST endpoints across an 8-service Docker backend with FastAPI, PostgreSQL, Redis, AWS S3, 158 tests, CI/CD, and OAuth/OIDC.",
+      "Cut crawler runtime from 138s to 43s, parallelising a 30-page workload with Celery and Redis.",
+      "Built a Claude and Playwright extraction pipeline for candidate profiles, at a 94.7% crawl success rate.",
+      "Shipped 31 REST endpoints across an 8-service FastAPI backend with 158 tests, CI/CD, and OAuth/OIDC.",
     ],
   },
   {
@@ -99,9 +101,9 @@ export const experience = [
     period: "June 2026 to Present",
     location: "London, United Kingdom",
     points: [
-      "Fine-tuned Qwen2.5-7B-Instruct using QLoRA on the SocSci210 behavioural dataset, training on 200 instruction-response examples over 1 epoch and reducing training loss from approximately 1.84 to 0.98.",
-      "Engineered a reproducible Python experimentation workflow using Pandas, Hugging Face, and LLaMA-Factory to clean, sample, and format behavioural data across 210 social science studies.",
-      "Benchmarked base and QLoRA-adapted model outputs using held-out behavioural examples, evaluating generalisation across 170 seen studies and 40 held-out studies through exact-match accuracy and reconstruction fidelity.",
+      "Fine-tuned Qwen2.5-7B-Instruct with QLoRA on SocSci210, cutting training loss from 1.84 to 0.98.",
+      "Built a reproducible Pandas, Hugging Face, and LLaMA-Factory workflow over 210 behavioural studies.",
+      "Benchmarked base against adapted outputs on 40 held-out studies for exact-match accuracy and fidelity.",
     ],
   },
 ];
@@ -114,9 +116,8 @@ export const projects = [
     href: "https://ts-forecast-copilot.streamlit.app/",
     stack: ["LangChain", "LangGraph", "Streamlit", "SQLite"],
     points: [
-      "Built a full-stack AI analytics copilot that translates natural-language queries into executable SQL and time-series forecasts, enabling users to analyse uploaded CSV/Excel datasets without writing code.",
-      "Engineered a multi-agent LangGraph workflow powered by the Anthropic Claude API, integrating LLM reasoning, query generation, forecasting logic, and per-session SQLite isolation.",
-      "Implemented an asynchronous data pipeline with structured error handling for invalid queries, model failures, and cloud deployment using thread-safe async execution.",
+      "Turns plain-English questions about an uploaded CSV or Excel file into executable SQL and forecasts.",
+      "Multi-agent LangGraph workflow on the Claude API, with async execution and per-session SQLite isolation.",
     ],
   },
   {
@@ -125,8 +126,8 @@ export const projects = [
     href: "https://github.com/adamelkadri/ecg-arrhythmia-classification-api",
     stack: ["PyTorch", "FastAPI", "Docker"],
     points: [
-      "Built an end-to-end 1D CNN with approximately 44K parameters in PyTorch to classify 5 arrhythmia types from 109K+ ECG heartbeats, achieving 93.8% accuracy and 0.77 macro-F1 on 21,892 held-out beats.",
-      "Handled 113x class imbalance using weighted loss, achieving 74-93% recall on rare classes, then deployed the model via a Dockerised FastAPI REST API with a 17-test CI pipeline.",
+      "44K-parameter 1D CNN over 109K ECG beats: 93.8% accuracy and 0.77 macro-F1 across 5 arrhythmia types.",
+      "Weighted loss for 113x class imbalance, served from a Dockerised FastAPI API with a 17-test CI pipeline.",
     ],
   },
 ];
