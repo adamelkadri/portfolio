@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
+import { Geist, IBM_Plex_Mono, Newsreader } from "next/font/google";
 import Cursor from "@/components/Cursor";
 import { siteUrl } from "@/lib/content";
 import "./globals.css";
@@ -11,8 +11,21 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+const geist = Geist({
+  variable: "--font-geist",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  display: "swap",
+});
+
 const description =
-  "Adam El-Kadri. BSc Computer Science & Artificial Intelligence at Royal Holloway, University of London. AI Engineer Intern at Zenithr and Research Assistant at Royal Holloway.";
+  "Adam El-Kadri. BSc Computer Science & Artificial Intelligence at Royal Holloway, University of London. AI Engineer Intern at Zenithr and Machine Learning Research Assistant at Royal Holloway.";
 
 // metadataBase resolves the relative canonical URL and the generated
 // opengraph-image / twitter-image into the absolute URLs that social and
@@ -20,21 +33,21 @@ const description =
 // automatically by the app/opengraph-image.tsx and app/twitter-image.tsx files.
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "adam el-kadri",
+  title: "Adam El-Kadri — AI Engineer & Researcher",
   description,
   alternates: { canonical: "/" },
   authors: [{ name: "Adam El-Kadri", url: siteUrl }],
   openGraph: {
     type: "website",
     url: "/",
-    siteName: "adam el-kadri",
-    title: "adam el-kadri",
+    siteName: "Adam El-Kadri",
+    title: "Adam El-Kadri — AI Engineer & Researcher",
     description,
     locale: "en_GB",
   },
   twitter: {
     card: "summary_large_image",
-    title: "adam el-kadri",
+    title: "Adam El-Kadri — AI Engineer & Researcher",
     description,
   },
 };
@@ -68,7 +81,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     // element before hydration, so React must be told not to flag the diff.
     <html
       lang="en"
-      className={`${plexMono.variable} dark h-full`}
+      className={`${geist.variable} ${newsreader.variable} ${plexMono.variable} dark h-full`}
       suppressHydrationWarning
     >
       <head>

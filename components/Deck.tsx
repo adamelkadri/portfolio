@@ -184,7 +184,8 @@ export default function Deck() {
           onClick={() => go(active - 1)}
           disabled={active === 0}
           aria-label="Previous section"
-          className="absolute top-1/2 left-2 z-40 hidden size-11 -translate-y-1/2 place-items-center rounded-full border border-line text-ink transition-opacity duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:opacity-60 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:opacity-40 md:grid"
+          data-cursor-zoom
+          className="absolute top-1/2 left-4 z-40 hidden size-11 -translate-y-1/2 place-items-center rounded-full border border-line bg-surface-raised/80 text-ink shadow-sm backdrop-blur-md transition-colors duration-200 hover:border-accent hover:bg-accent-soft hover:text-accent disabled:cursor-not-allowed disabled:opacity-25 disabled:hover:border-line disabled:hover:bg-surface-raised disabled:hover:text-ink md:grid xl:left-7"
         >
           <ChevronLeftIcon className="size-5" />
         </button>
@@ -194,31 +195,42 @@ export default function Deck() {
           onClick={() => go(active + 1)}
           disabled={active === slides.length - 1}
           aria-label="Next section"
-          className="absolute top-1/2 right-2 z-40 hidden size-11 -translate-y-1/2 place-items-center rounded-full border border-line text-ink transition-opacity duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] hover:opacity-60 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:opacity-40 md:grid"
+          data-cursor-zoom
+          className="absolute top-1/2 right-4 z-40 hidden size-11 -translate-y-1/2 place-items-center rounded-full border border-line bg-surface-raised/80 text-ink shadow-sm backdrop-blur-md transition-colors duration-200 hover:border-accent hover:bg-accent-soft hover:text-accent disabled:cursor-not-allowed disabled:opacity-25 disabled:hover:border-line disabled:hover:bg-surface-raised disabled:hover:text-ink md:grid xl:right-7"
         >
           <ChevronRightIcon className="size-5" />
         </button>
 
         {/* Solid surface so scrolling slide content is occluded rather than
-            running underneath the dots. */}
-        <div className="absolute inset-x-0 bottom-0 z-40 flex items-center justify-center bg-surface py-1">
-          {slides.map((slide, index) => (
-            <button
-              key={slide.id}
-              type="button"
-              onClick={() => go(index)}
-              aria-label={`Go to ${slide.label}`}
-              aria-current={index === active ? "true" : undefined}
-              className="group grid size-11 place-items-center"
-            >
-              <span
-                aria-hidden="true"
-                className={`size-1.5 rounded-full bg-ink transition-opacity duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:opacity-75 ${
-                  index === active ? "opacity-100" : "opacity-30"
-                }`}
-              />
-            </button>
-          ))}
+            running underneath the progress navigation. */}
+        <div className="absolute inset-x-0 bottom-0 z-40 border-t border-line bg-surface/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-14 max-w-[1440px] items-center justify-between px-5 md:px-8">
+            <div className="flex items-center gap-0.5 sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+              {slides.map((slide, index) => (
+                <button
+                  key={slide.id}
+                  type="button"
+                  onClick={() => go(index)}
+                  aria-label={`Go to ${slide.label}`}
+                  aria-current={index === active ? "true" : undefined}
+                  className="group grid h-11 w-8 place-items-center"
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`h-px transition-all duration-300 group-hover:bg-accent ${
+                      index === active ? "w-7 bg-accent" : "w-4 bg-ink/25"
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
+
+            <p className="tnum ml-auto font-mono text-[9px] font-medium tracking-[0.14em] text-ink-muted uppercase">
+              <span className="text-ink">{String(active + 1).padStart(2, "0")}</span>
+              <span className="mx-2 text-line">/</span>
+              {String(slides.length).padStart(2, "0")}
+            </p>
+          </div>
         </div>
       </main>
     </>

@@ -7,9 +7,8 @@ import { pills, profile } from "@/lib/content";
  * Social share card (LinkedIn, X, iMessage, Slack, ...). Rendered at build time
  * by Satori, so it ships as a static PNG that works under `output: export`.
  *
- * Everything here mirrors the deck's own design tokens (app/globals.css) and
- * IBM Plex Mono, so the card reads as the same site rather than a generic
- * placeholder.
+ * Everything here mirrors the deck's design tokens (app/globals.css), so the
+ * card reads as the same site rather than a generic placeholder.
  */
 
 export const dynamic = "force-static";
@@ -25,10 +24,12 @@ const [plexRegular, plexBold] = await Promise.all([
 ]);
 
 // Dark-theme tokens, copied from :root.dark in app/globals.css.
-const BG = "#1a1a1a";
-const INK = "#f0f0f0";
-const MUTED = "#999999";
-const LINE = "rgba(255,255,255,0.10)";
+const BG = "#111619";
+const RAISED = "#1d2529";
+const INK = "#eef1ed";
+const MUTED = "#99a4a7";
+const ACCENT = "#9bbdc3";
+const LINE = "rgba(238,241,237,0.12)";
 
 export default function Image() {
   return new ImageResponse(
@@ -56,11 +57,12 @@ export default function Image() {
               justifyContent: "center",
               width: 92,
               height: 92,
-              borderRadius: 18,
-              border: `2px solid ${LINE}`,
-              background: "#222222",
-              fontSize: 44,
-              fontWeight: 700,
+              borderRadius: 999,
+              border: `1px solid ${LINE}`,
+              background: RAISED,
+              color: ACCENT,
+              fontSize: 32,
+              fontWeight: 400,
             }}
           >
             {profile.initials}
@@ -73,7 +75,7 @@ export default function Image() {
               textTransform: "uppercase",
             }}
           >
-            portfolio
+            {profile.role}
           </span>
         </div>
 
@@ -81,7 +83,7 @@ export default function Image() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
-              fontSize: 96,
+              fontSize: 92,
               fontWeight: 700,
               lineHeight: 1.02,
               letterSpacing: "-0.03em",
@@ -94,7 +96,7 @@ export default function Image() {
               display: "flex",
               marginTop: 24,
               maxWidth: 900,
-              fontSize: 30,
+              fontSize: 26,
               lineHeight: 1.4,
               color: MUTED,
             }}
@@ -103,7 +105,7 @@ export default function Image() {
           </div>
         </div>
 
-        {/* Role pills, in the same fixed-light treatment as the deck. */}
+        {/* Role markers mirror the restrained credential tags in the hero. */}
         <div style={{ display: "flex", gap: 14 }}>
           {pills.map((pill) => (
             <div
@@ -111,13 +113,15 @@ export default function Image() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                background: "#ffffff",
-                color: "#1a1a1a",
-                border: "1.5px solid rgba(0,0,0,0.12)",
+                background: RAISED,
+                color: INK,
+                border: `1px solid ${LINE}`,
                 borderRadius: 999,
                 padding: "12px 22px",
-                fontSize: 23,
+                fontSize: 18,
                 fontWeight: 500,
+                letterSpacing: "0.04em",
+                textTransform: "uppercase",
               }}
             >
               {pill.text}

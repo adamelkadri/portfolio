@@ -6,8 +6,11 @@
  */
 
 export const profile = {
-  name: "adam el-kadri",
-  tagline: "Royal Holloway, University of London · BSc Computer Science & Artificial Intelligence",
+  name: "Adam El-Kadri",
+  role: "AI Engineer & Researcher",
+  tagline:
+    "Computer Science & Artificial Intelligence undergraduate building reliable AI systems, from applied research to production infrastructure.",
+  status: "Graduating June 2027 · Exploring MSc opportunities",
   initials: "ae",
   // The phone number on the CV is intentionally absent: keeping it out of this
   // file keeps it out of the shipped JavaScript bundle, not just the markup.
@@ -35,19 +38,19 @@ export const siteUrl = "https://adam-el-kadri.vercel.app";
  */
 export const pills = [
   {
-    text: "ai engineer intern",
-    position: "top-[12%] left-0 -translate-x-[34%]",
+    text: "AI Engineering",
+    position: "top-[13%] left-0 -translate-x-[18%]",
+    delay: "0.75s",
+  },
+  {
+    text: "Applied AI Research",
+    position: "top-[43%] right-0 translate-x-[18%]",
+    delay: "0.9s",
+  },
+  {
+    text: "First-Class Predicted",
+    position: "top-[78%] left-0 -translate-x-[12%]",
     delay: "1.05s",
-  },
-  {
-    text: "research assistant",
-    position: "top-[34%] right-0 translate-x-[34%]",
-    delay: "1.35s",
-  },
-  {
-    text: "first-class predicted",
-    position: "top-[78%] left-0 -translate-x-[22%]",
-    delay: "1.65s",
   },
 ] as const;
 
@@ -58,12 +61,12 @@ export type Slide = {
 };
 
 export const slides: Slide[] = [
-  { id: "index", label: "index", title: "Index" },
-  { id: "education", label: "education", title: "Education" },
-  { id: "experience", label: "experience", title: "Work Experience" },
-  { id: "projects", label: "projects", title: "Projects" },
-  { id: "skills", label: "skills", title: "Technical Skills" },
-  { id: "contact", label: "contact", title: "Contact" },
+  { id: "index", label: "Overview", title: "Overview" },
+  { id: "education", label: "Education", title: "Education" },
+  { id: "experience", label: "Experience", title: "Experience" },
+  { id: "projects", label: "Selected Work", title: "Selected Work" },
+  { id: "skills", label: "Expertise", title: "Technical Expertise" },
+  { id: "contact", label: "Contact", title: "Contact" },
 ];
 
 export const education = {
@@ -97,7 +100,7 @@ export const experience = [
   },
   {
     company: "Royal Holloway, University of London",
-    role: "Research Assistant",
+    role: "Machine Learning Research Assistant",
     period: "June 2026 to Present",
     location: "London, United Kingdom",
     points: [
