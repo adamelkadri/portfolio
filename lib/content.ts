@@ -48,7 +48,7 @@ export const pills = [
     delay: "0.9s",
   },
   {
-    text: "First-Class Predicted",
+    text: "First-Class Honours",
     position: "top-[78%] left-0 -translate-x-[12%]",
     delay: "1.05s",
   },
@@ -74,7 +74,7 @@ export const education = {
   degree: "BSc Computer Science & Artificial Intelligence",
   graduation: "Expected graduation: June 2027",
   location: "London, United Kingdom",
-  honours: "First-Class Honours (Predicted)",
+  honours: "First-Class Honours",
   modules: [
     "Deep Learning",
     "Natural Language Processing",

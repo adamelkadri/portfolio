@@ -183,7 +183,7 @@ export function IndexSlide({ onExplore }: { onExplore: () => void }) {
             </div>
 
             {pills.map((pill) => (
-              <div key={pill.text} aria-hidden="true" className={`absolute z-10 hidden sm:block ${pill.position}`}>
+              <div key={pill.text} aria-hidden="true" className={`absolute z-10 ${pill.position}`}>
                 <div className="pill-float" style={{ animationDelay: pill.delay }}>
                   <span
                     className="pill pill-pop block rounded-full px-3.5 py-2 font-mono text-[9px] font-medium tracking-[0.06em] whitespace-nowrap uppercase"
