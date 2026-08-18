@@ -135,22 +135,13 @@ export function IndexSlide({ onExplore }: { onExplore: () => void }) {
             {profile.tagline}
           </p>
 
-          <div
-            className="hero-drop mt-8 inline-flex items-center gap-3 border-y border-line py-3 pr-5 font-label text-[10px] font-medium tracking-[0.13em] text-ink-muted uppercase"
-            style={{ animationDelay: "0.68s" }}
-          >
-            <span className="text-accent">Status</span>
-            <span className="h-3 w-px bg-line" />
-            {profile.status}
-          </div>
-
           <button
             type="button"
             onClick={onExplore}
             aria-label="Explore: go to education"
             data-cursor-zoom
             className="hero-drop group mt-8 flex h-12 items-center gap-4 text-ink"
-            style={{ animationDelay: "0.76s" }}
+            style={{ animationDelay: "0.68s" }}
           >
             <span className="font-label text-[10px] font-medium tracking-[0.18em] uppercase">
               Explore profile
