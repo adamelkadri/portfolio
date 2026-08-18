@@ -35,7 +35,7 @@ const description =
 // automatically by the app/opengraph-image.tsx and app/twitter-image.tsx files.
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Adam El-Kadri — AI Engineer & Researcher",
+  title: "Adam El-Kadri - AI Engineer & Researcher",
   description,
   alternates: { canonical: "/" },
   authors: [{ name: "Adam El-Kadri", url: siteUrl }],
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: "Adam El-Kadri",
-    title: "Adam El-Kadri — AI Engineer & Researcher",
+    title: "Adam El-Kadri - AI Engineer & Researcher",
     description,
     locale: "en_GB",
   },
