@@ -50,8 +50,8 @@
 
   --font-sans: var(--font-geist), Arial, sans-serif;
   --font-display: var(--font-newsreader), Georgia, serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo,
-    monospace;
+  --font-label: var(--font-space-grotesk), var(--font-geist), Arial,
+    sans-serif;
 
   --shadow-float: 0 14px 42px rgba(19, 27, 31, 0.12);
   --shadow-card: 0 24px 70px rgba(19, 27, 31, 0.08);

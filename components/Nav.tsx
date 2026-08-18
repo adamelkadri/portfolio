@@ -49,7 +49,7 @@ export default function Nav({ active, onNavigate }: NavProps) {
             data-cursor-zoom
             className="group -mx-2 flex h-11 items-center gap-3 px-2 text-ink"
           >
-            <span className="grid size-7 place-items-center rounded-full border border-line font-mono text-[9px] font-medium tracking-[0.08em] uppercase transition-colors duration-200 group-hover:border-accent group-hover:text-accent">
+            <span className="grid size-7 place-items-center rounded-full border border-line font-label text-[9px] font-medium tracking-[0.08em] uppercase transition-colors duration-200 group-hover:border-accent group-hover:text-accent">
               {profile.initials}
             </span>
             <span className="font-display text-[17px] font-semibold tracking-[-0.02em]">
@@ -71,7 +71,7 @@ export default function Nav({ active, onNavigate }: NavProps) {
                     onClick={() => onNavigate(index)}
                     aria-current={isActive ? "true" : undefined}
                     data-cursor-zoom
-                    className={`relative flex h-11 items-center px-3 font-mono text-[10px] font-medium tracking-[0.12em] text-ink uppercase transition-opacity duration-200 hover:opacity-100 ${
+                    className={`relative flex h-11 items-center px-3 font-label text-[10px] font-medium tracking-[0.16em] text-ink uppercase transition-opacity duration-200 hover:opacity-100 ${
                       isActive ? "opacity-100" : "opacity-[0.48]"
                     }`}
                   >
@@ -139,7 +139,7 @@ export default function Nav({ active, onNavigate }: NavProps) {
                     index === active ? "opacity-100" : "opacity-[0.42]"
                   }`}
                 >
-                  <span className="tnum font-mono text-[10px] tracking-[0.14em] text-accent">
+                  <span className="tnum font-label text-[10px] tracking-[0.14em] text-accent">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   {slide.label}
@@ -148,7 +148,7 @@ export default function Nav({ active, onNavigate }: NavProps) {
             ))}
           </ul>
 
-          <div className="pb-7 font-mono text-[10px] tracking-[0.14em] text-ink-muted uppercase">
+          <div className="pb-7 font-label text-[10px] tracking-[0.14em] text-ink-muted uppercase">
             Portfolio · 2026
           </div>
         </div>

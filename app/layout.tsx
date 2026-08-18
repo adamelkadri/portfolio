@@ -1,13 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, IBM_Plex_Mono, Newsreader } from "next/font/google";
+import { Geist, Newsreader, Space_Grotesk } from "next/font/google";
 import Cursor from "@/components/Cursor";
 import { siteUrl } from "@/lib/content";
 import "./globals.css";
 
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
+// Carries every small tracked uppercase label. Space Grotesk keeps the
+// technical character the monospace gave those labels, but its proportional
+// widths read as typography rather than as terminal output.
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
   display: "swap",
 });
 
@@ -81,7 +83,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     // element before hydration, so React must be told not to flag the diff.
     <html
       lang="en"
-      className={`${geist.variable} ${newsreader.variable} ${plexMono.variable} dark h-full`}
+      className={`${geist.variable} ${newsreader.variable} ${spaceGrotesk.variable} dark h-full`}
       suppressHydrationWarning
     >
       <head>

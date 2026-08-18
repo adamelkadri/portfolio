@@ -18,9 +18,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 // Read once at module scope: the fonts never change between requests.
-const [plexRegular, plexBold] = await Promise.all([
-  readFile(join(process.cwd(), "assets/IBMPlexMono-Regular.ttf")),
-  readFile(join(process.cwd(), "assets/IBMPlexMono-Bold.ttf")),
+const [labelRegular, labelBold] = await Promise.all([
+  readFile(join(process.cwd(), "assets/SpaceGrotesk-Regular.ttf")),
+  readFile(join(process.cwd(), "assets/SpaceGrotesk-Bold.ttf")),
 ]);
 
 // Dark-theme tokens, copied from :root.dark in app/globals.css.
@@ -43,7 +43,7 @@ export default function Image() {
           justifyContent: "space-between",
           background: BG,
           color: INK,
-          fontFamily: "IBM Plex Mono",
+          fontFamily: "Space Grotesk",
           padding: 80,
           letterSpacing: "-0.01em",
         }}
@@ -149,8 +149,8 @@ export default function Image() {
     {
       ...size,
       fonts: [
-        { name: "IBM Plex Mono", data: plexRegular, weight: 400, style: "normal" },
-        { name: "IBM Plex Mono", data: plexBold, weight: 700, style: "normal" },
+        { name: "Space Grotesk", data: labelRegular, weight: 400, style: "normal" },
+        { name: "Space Grotesk", data: labelBold, weight: 700, style: "normal" },
       ],
     },
   );

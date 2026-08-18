@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { profile } from "@/lib/content";
 
 /**
- * Browser-tab / bookmark icon: the "ae" monogram in IBM Plex Mono on the deck's
+ * Browser-tab / bookmark icon: the "ae" monogram in the deck's label face on its
  * dark surface, replacing the default Next.js starter favicon. Generated at
  * build time, so it ships as a static PNG under `output: export`.
  */
@@ -13,8 +13,8 @@ export const dynamic = "force-static";
 export const size = { width: 64, height: 64 };
 export const contentType = "image/png";
 
-const plexBold = await readFile(
-  join(process.cwd(), "assets/IBMPlexMono-Bold.ttf"),
+const labelBold = await readFile(
+  join(process.cwd(), "assets/SpaceGrotesk-Bold.ttf"),
 );
 
 export default function Icon() {
@@ -29,7 +29,7 @@ export default function Icon() {
           justifyContent: "center",
           background: "#111619",
           color: "#9bbdc3",
-          fontFamily: "IBM Plex Mono",
+          fontFamily: "Space Grotesk",
           fontSize: 34,
           fontWeight: 700,
           letterSpacing: "-0.04em",
@@ -41,7 +41,7 @@ export default function Icon() {
     {
       ...size,
       fonts: [
-        { name: "IBM Plex Mono", data: plexBold, weight: 700, style: "normal" },
+        { name: "Space Grotesk", data: labelBold, weight: 700, style: "normal" },
       ],
     },
   );

@@ -225,7 +225,7 @@ export default function Deck() {
               ))}
             </div>
 
-            <p className="tnum ml-auto font-mono text-[9px] font-medium tracking-[0.14em] text-ink-muted uppercase">
+            <p className="tnum ml-auto font-label text-[9px] font-medium tracking-[0.14em] text-ink-muted uppercase">
               <span className="text-ink">{String(active + 1).padStart(2, "0")}</span>
               <span className="mx-2 text-line">/</span>
               {String(slides.length).padStart(2, "0")}

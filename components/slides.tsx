@@ -29,11 +29,11 @@ function SectionHeading({ id, title }: { id: string; title: string }) {
   return (
     <div className="reveal mb-12 md:mb-16" style={step(0)}>
       <div className="mb-4 flex items-center gap-4">
-        <span className="tnum font-mono text-[10px] font-medium tracking-[0.18em] text-accent">
+        <span className="tnum font-label text-[10px] font-medium tracking-[0.18em] text-accent">
           {String(index + 1).padStart(2, "0")}
         </span>
         <span aria-hidden="true" className="h-px w-10 bg-accent/60" />
-        <span className="font-mono text-[10px] font-medium tracking-[0.16em] text-ink-muted uppercase">
+        <span className="font-label text-[10px] font-medium tracking-[0.16em] text-ink-muted uppercase">
           Profile
         </span>
       </div>
@@ -70,7 +70,7 @@ function Chips({ items, from }: { items: readonly string[]; from: number }) {
       {items.map((item, i) => (
         <li
           key={item}
-          className="reveal rounded-full border border-line bg-surface px-3 py-1.5 font-mono text-[10px] font-medium tracking-[0.045em] text-ink-muted"
+          className="reveal rounded-full border border-line bg-surface px-3 py-1.5 font-label text-[10px] font-medium tracking-[0.09em] text-ink-muted"
           style={step(from + i * 0.2)}
         >
           {item}
@@ -94,7 +94,7 @@ export function IndexSlide({ onExplore }: { onExplore: () => void }) {
             style={{ animationDelay: "0.1s" }}
           >
             <span className="size-2 rounded-full bg-accent" />
-            <span className="font-mono text-[10px] font-medium tracking-[0.18em] text-ink-muted uppercase">
+            <span className="font-label text-[10px] font-medium tracking-[0.18em] text-ink-muted uppercase">
               {profile.role}
             </span>
           </div>
@@ -136,7 +136,7 @@ export function IndexSlide({ onExplore }: { onExplore: () => void }) {
           </p>
 
           <div
-            className="hero-drop mt-8 inline-flex items-center gap-3 border-y border-line py-3 pr-5 font-mono text-[10px] font-medium tracking-[0.08em] text-ink-muted uppercase"
+            className="hero-drop mt-8 inline-flex items-center gap-3 border-y border-line py-3 pr-5 font-label text-[10px] font-medium tracking-[0.13em] text-ink-muted uppercase"
             style={{ animationDelay: "0.68s" }}
           >
             <span className="text-accent">Status</span>
@@ -152,7 +152,7 @@ export function IndexSlide({ onExplore }: { onExplore: () => void }) {
             className="hero-drop group mt-8 flex h-12 items-center gap-4 text-ink"
             style={{ animationDelay: "0.76s" }}
           >
-            <span className="font-mono text-[10px] font-medium tracking-[0.18em] uppercase">
+            <span className="font-label text-[10px] font-medium tracking-[0.18em] uppercase">
               Explore profile
             </span>
             <span className="grid size-9 place-items-center rounded-full border border-line transition-colors duration-200 group-hover:border-accent group-hover:bg-accent-soft group-hover:text-accent">
@@ -176,8 +176,8 @@ export function IndexSlide({ onExplore }: { onExplore: () => void }) {
                 />
                 <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-black/[0.72] to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white">
-                  <span className="font-mono text-[9px] tracking-[0.16em] uppercase">Based in London</span>
-                  <span className="font-mono text-[9px] tracking-[0.16em] text-white/70 uppercase">01 / 06</span>
+                  <span className="font-label text-[9px] tracking-[0.16em] uppercase">Based in London</span>
+                  <span className="font-label text-[9px] tracking-[0.16em] text-white/70 uppercase">01 / 06</span>
                 </div>
               </div>
             </div>
@@ -186,7 +186,7 @@ export function IndexSlide({ onExplore }: { onExplore: () => void }) {
               <div key={pill.text} aria-hidden="true" className={`absolute z-10 ${pill.position}`}>
                 <div className="pill-float" style={{ animationDelay: pill.delay }}>
                   <span
-                    className="pill pill-pop block rounded-full px-3.5 py-2 font-mono text-[9px] font-medium tracking-[0.06em] whitespace-nowrap uppercase"
+                    className="pill pill-pop block rounded-full px-3.5 py-2 font-label text-[9px] font-medium tracking-[0.11em] whitespace-nowrap uppercase"
                     style={{ animationDelay: pill.delay }}
                   >
                     {pill.text}
@@ -208,7 +208,7 @@ export function EducationSlide() {
 
       <div className="grid gap-8 lg:grid-cols-[1.35fr_0.65fr] lg:gap-16">
         <div>
-          <p className="reveal mb-4 font-mono text-[10px] font-medium tracking-[0.16em] text-accent uppercase" style={step(1)}>
+          <p className="reveal mb-4 font-label text-[10px] font-medium tracking-[0.16em] text-accent uppercase" style={step(1)}>
             BSc · 2024—2027
           </p>
           <h3
@@ -227,22 +227,22 @@ export function EducationSlide() {
 
         <dl className="reveal professional-card rounded-2xl p-6 md:p-7" style={step(4)}>
           <div className="border-b border-line pb-5">
-            <dt className="font-mono text-[9px] font-medium tracking-[0.16em] text-ink-muted uppercase">Academic standing</dt>
+            <dt className="font-label text-[9px] font-medium tracking-[0.16em] text-ink-muted uppercase">Academic standing</dt>
             <dd className="mt-2 text-[16px] font-medium text-ink">{education.honours}</dd>
           </div>
           <div className="border-b border-line py-5">
-            <dt className="font-mono text-[9px] font-medium tracking-[0.16em] text-ink-muted uppercase">Graduation</dt>
+            <dt className="font-label text-[9px] font-medium tracking-[0.16em] text-ink-muted uppercase">Graduation</dt>
             <dd className="tnum mt-2 text-[15px] text-ink">June 2027</dd>
           </div>
           <div className="pt-5">
-            <dt className="font-mono text-[9px] font-medium tracking-[0.16em] text-ink-muted uppercase">Location</dt>
+            <dt className="font-label text-[9px] font-medium tracking-[0.16em] text-ink-muted uppercase">Location</dt>
             <dd className="mt-2 text-[15px] text-ink">{education.location}</dd>
           </div>
         </dl>
       </div>
 
       <div className="mt-12 border-t border-line pt-8 md:mt-16">
-        <p className="reveal mb-5 font-mono text-[10px] font-medium tracking-[0.16em] text-ink-muted uppercase" style={step(5)}>
+        <p className="reveal mb-5 font-label text-[10px] font-medium tracking-[0.16em] text-ink-muted uppercase" style={step(5)}>
           Relevant modules
         </p>
         <Chips items={education.modules} from={6} />
@@ -259,7 +259,7 @@ export function ExperienceSlide() {
       <div className="flex flex-col border-t border-line">
         {experience.map((job, jobIndex) => (
           <article key={job.company + job.role} className="grid gap-6 border-b border-line py-9 md:grid-cols-[44px_1fr] md:gap-8 md:py-10">
-            <span className="reveal tnum font-mono text-[10px] tracking-[0.16em] text-accent" style={step(1 + jobIndex * 5)}>
+            <span className="reveal tnum font-label text-[10px] tracking-[0.16em] text-accent" style={step(1 + jobIndex * 5)}>
               {String(jobIndex + 1).padStart(2, "0")}
             </span>
             <div>
@@ -279,7 +279,7 @@ export function ExperienceSlide() {
                   </p>
                 </div>
                 <div className="reveal md:text-right" style={step(4 + jobIndex * 5)}>
-                  <p className="tnum font-mono text-[10px] font-medium tracking-[0.08em] text-ink uppercase">{job.period}</p>
+                  <p className="tnum font-label text-[10px] font-medium tracking-[0.12em] text-ink uppercase">{job.period}</p>
                   <p className="mt-1 text-[13px] text-ink-muted">{job.location}</p>
                 </div>
               </div>
@@ -306,7 +306,7 @@ export function ProjectsSlide() {
             style={step(1 + projectIndex * 2)}
           >
             <div className="flex items-start justify-between gap-6">
-              <span className="tnum font-mono text-[9px] font-medium tracking-[0.16em] text-accent uppercase">
+              <span className="tnum font-label text-[9px] font-medium tracking-[0.16em] text-accent uppercase">
                 Project {String(projectIndex + 1).padStart(2, "0")}
               </span>
               <a
@@ -351,7 +351,7 @@ export function SkillsSlide() {
             className="grid gap-4 border-b border-line py-7 md:grid-cols-[220px_1fr] md:gap-10"
           >
             <p
-              className="reveal font-mono text-[10px] font-medium tracking-[0.14em] text-accent uppercase"
+              className="reveal font-label text-[10px] font-medium tracking-[0.14em] text-accent uppercase"
               style={step(1 + groupIndex)}
             >
               {group.group}
@@ -388,7 +388,7 @@ export function ContactSlide() {
                 className="reveal group flex min-h-[80px] items-center justify-between gap-6 py-5 transition-colors duration-200 hover:text-accent"
                 style={step(2 + i)}
               >
-                <span className="flex items-center gap-4 font-mono text-[10px] font-medium tracking-[0.14em] text-ink-muted uppercase">
+                <span className="flex items-center gap-4 font-label text-[10px] font-medium tracking-[0.14em] text-ink-muted uppercase">
                   <span className="tnum text-accent">{String(i + 1).padStart(2, "0")}</span>
                   {link.label}
                 </span>
